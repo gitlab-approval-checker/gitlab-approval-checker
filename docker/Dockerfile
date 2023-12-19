@@ -14,7 +14,6 @@ RUN go build -o main ./pkg/...
 
 FROM ubuntu
 
-RUN apt update && apt install -y libsqlite3-dev
 RUN groupadd user && \
     useradd -m -s /sbin/nologin -g user user
 
