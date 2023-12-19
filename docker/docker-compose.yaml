@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  checkapproval:
+    restart: always
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    environment:
+      - GITLAB_TOKEN=${GITLAB_TOKEN}
+      - GITLAB_API_URL=${GITLAB_API_URL}
+      - CHECKER_URL=${CHECKER_URL}
+    ports:
+      - 5000:5000
+    volumes:
+      - $PWD/db:/workspace/db
+
+networks:
+  proxy:
+    external: true
